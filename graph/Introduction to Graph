@@ -1,0 +1,18 @@
+Ques1. What is Graph?
+Answer. Graphs are data structures that have a wide-ranging application in real life. 
+        These include analysis of electrical circuits, finding the shortest routes between two places, building navigation 
+        systems like Google Maps, even social media using graphs to store data about each user, etc.
+        It is a non-linear data-structure.
+
+Ques2. Type of Graph?
+Answer. 1.Directed Graph      1.Cyclic Graph     1.Symmetric Graph    1.Weighted Graph
+        2.Undirected Graph    2.Acyclic Graph    2.Asymmetric Graph   2.Unweighted Graph
+
+Ques3.Components of Graph?
+Answer. Edges(line Connecting two nodes or vertices) and vertex(Nodes) are the Components of Graph
+
+Ques4.Total no. of Degree in an Undirected Graph?
+Answer. 2 * Total No. of Edges in the Graph is Equal to the total number  degree in the graph.
+
+Ques5. 
+
