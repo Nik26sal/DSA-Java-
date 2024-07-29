@@ -1,0 +1,29 @@
+Ques1. What is ArrayList?
+Answer. ArrayList is a Java class implemented using the List interface. 
+        Java ArrayList, as the name suggests, provides the functionality of a dynamic array 
+        where the size is not fixed as an array. 
+        Also, as a part of the Collections framework, it has many features not available with arrays.
+        Initial Capcity of ArrayList is about 10.
+        if the size become full and the user add the new element then it make a new memory in heap with double size 
+        or copy all the element from ArrayList first to other then add that Element.
+        ArrayList is a Class implements list Inteface and Extends the Collections.
+        Started from index 0.
+
+    ----Methods used in ArrayList:-
+       1.add(index,element)
+       2.add(element)
+       3.addAll(Collection c)
+       4.addAll(index,Collection c)
+       5.clear() // Remove all elements from ArrayList
+       6.clone() // give Shallow Copy of ArrayList
+       7.contains(element) // give boolean answer
+       8.indexOf(elememt) // give index of element otherwise -1
+       9.get(index) // element on the given index
+       10.isEmpty() // give boolean value
+       11.lastIndexOf(element)
+       12.remove(element)
+       13.remove(index)
+       14.size() // the length of ArrayList that filled
+       15.toArray() // return Array
+
+--These are some methods that used mostly but to read other method explore self
