@@ -1,0 +1,39 @@
+class Solution {
+   private void DFS(ArrayList<ArrayList<Integer>> graph, boolean[] visited, int src) {
+        visited[src] = true;
+        for (int i : graph.get(src)) {
+            if (!visited[i]) {
+                DFS(graph, visited, i);
+            }
+        }
+    }
+
+    public int findCircleNum(int[][] isConnected) {
+        int n = isConnected.length;
+        ArrayList<ArrayList<Integer>> graph = new ArrayList<>();
+        
+        for (int i = 0; i < n; i++) {
+            graph.add(new ArrayList<>());
+        }
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (i != j && isConnected[i][j] == 1) {
+                    graph.get(i).add(j);
+                    graph.get(j).add(i);
+                }
+            }
+        }
+
+        int cnt = 0;
+        boolean[] visited = new boolean[n];
+
+        for (int i = 0; i < n; i++) {
+            if (!visited[i]) {
+                DFS(graph, visited, i);
+                cnt++;
+            }
+        }
+        return cnt;
+    }
+}
