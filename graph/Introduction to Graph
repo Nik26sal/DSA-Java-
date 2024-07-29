@@ -14,5 +14,10 @@ Answer. Edges(line Connecting two nodes or vertices) and vertex(Nodes) are the C
 Ques4.Total no. of Degree in an Undirected Graph?
 Answer. 2 * Total No. of Edges in the Graph is Equal to the total number  degree in the graph.
 
-Ques5. 
+Ques5. What is BFS technique?.
+Answer. BFS means Breadth First Search. In this the level Wise technique is Used.It is Mostly used to solve the Matrix Problems also
+        Neighbouring Traversal is also called to it(Not book but given by me).Queue is Used in it.
+
+Ques6. What is DFS technique in Graph?
+Answer. DFS means Deapth First Search.In this the path wise traversal is Used.In it Recursion is Used to implement it.
 
