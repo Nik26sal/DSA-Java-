@@ -1,0 +1,71 @@
+BY DFS-----------------------------------
+class Solution {
+    private boolean DFS(int parent[],boolean visited[],ArrayList<ArrayList<Integer>> adj,int src,int par){
+        visited[src] = true;
+        parent[src] = par;
+        
+        for(int nbr:adj.get(src)){
+            if(!visited[nbr]){
+                if(DFS(parent,visited,adj,nbr,src)){
+                    return true;
+                }
+            }
+            else{
+                if(nbr != par){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    public boolean isCycle(int V, ArrayList<ArrayList<Integer>> adj) {
+        int parent[] = new int[V];
+        boolean visited[] = new boolean[V];
+        
+        for(int i =0;i<V;i++){
+            if(!visited[i]){
+                if(DFS(parent,visited,adj,i,-1)){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+}
+
+BY BFS------------------------------------------------------------------------------
+
+class Solution {
+    // Function to detect cycle in an undirected graph.
+private boolean detect(boolean visited[],int parent[],int src,int par,ArrayList<ArrayList<Integer>> adj){
+        parent[src] = par;
+        visited[src] = true;
+        Queue<Integer> q = new LinkedList<>();
+        q.add(src);
+        while(!q.isEmpty()){
+            int a = q.remove();
+            ArrayList<Integer> ls = adj.get(a);
+            for(int i: ls){
+                if(!visited[i]){
+                    parent[i] = a;
+                    visited[i] = true;
+                    q.add(i);
+                }
+                else if(i != parent[a]){
+                    return true;
+                }
+            }
+        }
+        return false;
+}
+    public boolean isCycle(int V, ArrayList<ArrayList<Integer>> adj) {
+         int []parent = new int[V];
+        boolean []visited = new boolean[V];
+        for(int i =0;i<V;i++){
+             if(!visited[i] &&  detect(visited,parent,i,-1,adj)){
+                 return true;
+             }
+        }
+return false;
+    }
+}
