@@ -1,0 +1,56 @@
+import java.util.LinkedList;
+import java.util.Queue;
+
+class Solution {
+    class Pair {
+        int x;
+        int y;
+        int dis;
+        public Pair(int x, int y, int dis) {
+            this.x = x;
+            this.y = y;
+            this.dis = dis;
+        }
+    }
+
+    public int[][] updateMatrix(int[][] mat) {
+        int m = mat.length;
+        int n = mat[0].length;
+        boolean[][] visited = new boolean[m][n];
+        int[][] distance = new int[m][n];
+        Queue<Pair> q = new LinkedList<>();
+
+
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (mat[i][j] == 0) {
+                    q.add(new Pair(i, j, 0));
+                    visited[i][j] = true;
+                }
+            }
+        }
+
+        int[] dx = {-1, 1, 0, 0};
+        int[] dy = {0, 0, -1, 1};
+
+
+        while (!q.isEmpty()) {
+            Pair p = q.remove();
+            int x = p.x;
+            int y = p.y;
+            int dis = p.dis;
+            distance[x][y] = dis;
+
+            for (int i = 0; i < 4; i++) {
+                int newX = x + dx[i];
+                int newY = y + dy[i];
+                
+                if (newX >= 0 && newX < m && newY >= 0 && newY < n && !visited[newX][newY] && mat[newX][newY] == 1) {
+                    q.add(new Pair(newX, newY, dis + 1));
+                    visited[newX][newY] = true;
+                }
+            }
+        }
+        return distance;
+    }
+}
