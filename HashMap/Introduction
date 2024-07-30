@@ -1,1 +1,39 @@
+--It provides the basic implementation of the Map interface of Java. 
+  HashMap in Java stores the data in (Key, Value) pairs.
+  If you try to insert the duplicate key in HashMap, it will replace the element of the corresponding key.
 
+--What is HashMap?
+  Java HashMap is similar to HashTable, but it is unsynchronized. 
+  It allows to store the null keys as well, but there should be only one null key object and there can be any number of null values. 
+  This class makes no guarantees as to the order of the map.
+
+--Ques1.What is a HashMap in Java?
+  Answer.HashMap in Java is the class from the collection framework that can store key-value pairs inside it.
+
+--Ques2.What is the benefit of HashMap?
+  Answer. HashMap is used because of it provides features like:
+          1.Fast retrieval
+          2.Efficient storage
+          3.Flexible to use
+          4.Easy to use
+          5.Suitable for large data sets
+
+--Methods of HahsMap--------------
+  1.put(key,Value);
+  2.containsKey(key);
+  3.get(key);
+  4.clear() // clear all values of map
+  5.clone() give a shallow copy
+  6.containsValue(value) 
+  7.isEmpty();
+  8.keySet() // Returns a Set view of the keys contained in this map.
+  9.entrySet() // Returns a Set view of the mappings contained in this map.
+  10.remove(key)
+  11.size()
+  12.values() // Returns a Collection view of the values contained in this map.
+  13.equals() // used to compare two maps
+  14.toString() // return string representation of this map
+  15.getOrDefault(key,defaultValue)
+  16.putIfAbsent(key,defaultValue)
+  17.replace(key,value)
+  18.replace(key,oldValue,newValue)
