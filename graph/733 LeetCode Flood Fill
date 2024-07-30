@@ -1,0 +1,44 @@
+import java.util.LinkedList;
+import java.util.Queue;
+
+class Solution {
+    class Pair {
+        int x;
+        int y;
+        
+        public Pair(int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
+    }
+    
+    public int[][] floodFill(int[][] a, int sr, int sc, int color) {
+        int originalColor = a[sr][sc];
+        if (originalColor == color) return a;
+
+        Queue<Pair> q = new LinkedList<>();
+        q.offer(new Pair(sr, sc));
+        a[sr][sc] = color;
+
+        int[] dx = {-1, 1, 0, 0};
+        int[] dy = {0, 0, -1, 1};
+
+        while (!q.isEmpty()) {
+            Pair p = q.remove();
+            int x = p.x;
+            int y = p.y;
+
+            for (int i = 0; i < 4; i++) {
+                int X = x + dx[i];
+                int Y = y + dy[i];
+
+                if (X >= 0 && Y >= 0 && X < a.length && Y < a[0].length && a[X][Y] == originalColor) {
+                    a[X][Y] = color;
+                    q.offer(new Pair(X, Y));
+                }
+            }
+        }
+        
+        return a;
+    }
+}
