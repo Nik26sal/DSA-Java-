@@ -1,1 +1,82 @@
 
+-------->>>>>>>>>>>>>>>>>>BFS------------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ 
+
+This method is also Known as Kahn's algorithms
+
+
+class Solution
+{
+    //Function to return list containing vertices in Topological order. 
+    static int[] topoSort(int V, ArrayList<ArrayList<Integer>> adj) 
+    {
+       int[] inDegree = new int[V];
+        for (int i = 0; i < V; i++) {
+            for (int neighbor : adj.get(i)) {
+                inDegree[neighbor]++;
+            }
+        }
+
+        Queue<Integer> queue = new LinkedList<>();
+        for (int i = 0; i < V; i++) {
+            if (inDegree[i] == 0) {
+                queue.offer(i);
+            }
+        }
+
+        int[] topoOrder = new int[V];
+        int index = 0;
+
+        while (!queue.isEmpty()) {
+            int current = queue.poll();
+            topoOrder[index++] = current;
+
+            for (int neighbor : adj.get(current)) {
+                inDegree[neighbor]--;
+                if (inDegree[neighbor] == 0) {
+                    queue.offer(neighbor);
+                }
+            }
+        }
+
+        return topoOrder;
+    }
+}
+
+-------->>>>>>>>>>>>>>>>>>DFS------------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+
+/*Complete the function below*/
+
+
+class Solution
+{
+    private static void topo(Stack<Integer> st ,boolean visited[],int src,ArrayList<ArrayList<Integer>> adj){
+        visited[src] = true;
+        for(int i :adj.get(src)){
+            if(!visited[i]){
+                topo(st,visited,i,adj);
+            }
+        }
+        st.push(src);
+    }
+    
+    //Function to return list containing vertices in Topological order. 
+    static int[] topoSort(int V, ArrayList<ArrayList<Integer>> adj) 
+    {
+        boolean visited [] = new boolean[V];
+        Stack<Integer> st =new Stack<>();
+        for(int i =0;i<V;i++){
+            if(!visited[i]){
+                topo(st,visited,i,adj);
+            }
+        }
+        int arr[] = new int[V];
+        int i =0;
+        while(!st.isEmpty()){
+            arr[i++] = st.pop();
+        }
+        return arr;
+    }
+}
