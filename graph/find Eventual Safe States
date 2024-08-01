@@ -1,0 +1,41 @@
+class Solution {
+    public List<Integer> eventualSafeNodes(int[][] graph) {
+         ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
+        for (int i = 0; i < graph.length; i++) {
+            adj.add(new ArrayList<>());
+        }
+        for (int i = 0; i < graph.length; i++) {
+            for (int j = 0; j < graph[i].length; j++) {
+                adj.get(graph[i][j]).add(i);
+            }
+        }
+
+        int inDegree[] = new int[graph.length];
+        for (int i = 0; i < graph.length; i++) {
+            for (int nbr : adj.get(i)) {
+                inDegree[nbr]++;
+            }
+        }
+
+        Queue<Integer> q = new LinkedList<>();
+        for (int i = 0; i < inDegree.length; i++) {
+            if (inDegree[i] == 0) {
+                q.offer(i);
+            }
+        }
+        ArrayList<Integer> safeNode = new ArrayList<>();
+        while (!q.isEmpty()) {
+            int node = q.remove();
+            safeNode.add(node);
+            for (int nbr : adj.get(node)) {
+                inDegree[nbr]--;
+                if (inDegree[nbr] == 0) {
+                    q.offer(nbr);
+                }
+            }
+        }
+
+        Collections.sort(safeNode);
+        return safeNode;
+    }
+}
