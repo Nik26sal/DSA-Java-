@@ -1,1 +1,80 @@
 treeSet is slso same as the HashSet and all the methods of hashSet are also used in TreeSet the only differnce in it is all element present in treeSet are in sorted order.
+Example1.....
+import java.util.HashSet;
+ 
+// Main class
+class GFG {
+ 
+    // Main driver method
+    public static void main(String[] args)
+    {
+        // Creating a HashSet object of string type
+        HashSet<String> hset = new HashSet<String>();
+ 
+        // Adding elements to HashSet
+        // using add() method
+        hset.add("geeks");
+        hset.add("for");
+        hset.add("practice");
+        hset.add("contribute");
+ 
+        // Duplicate removed
+        hset.add("geeks");
+ 
+        // Printing HashSet elements using for each loop
+ 
+        // Display message only
+        System.out.println("HashSet contains: ");
+ 
+        // Iterating over hashSet using for-each loop
+        for (String temp : hset) {
+ 
+            // Printing all elements inside above hashSet
+            System.out.println(temp);
+        }
+    }
+ }
+Output........
+                  HashSet contains: 
+                  practice
+                  geeks
+                  for
+                  contribute
+
+
+Example2>.....................
+import java.util.TreeSet;
+ 
+// Class
+class TreeSetDemo {
+ 
+    // Main driver method
+    public static void main(String[] args)
+    {
+        // Create an empty TreeSet
+        TreeSet<String> tset = new TreeSet<String>();
+ 
+        // Adding elements to HashSet
+        // using add() method
+        tset.add("geeks");
+        tset.add("for");
+        tset.add("practice");
+        tset.add("contribute");
+ 
+        // Duplicate elements being removed
+        tset.add("geeks");
+ 
+        // Displaying TreeSet elements
+        System.out.println("TreeSet contains: ");
+       
+        for (String temp : tset) {
+            System.out.println(temp);
+        }
+    }
+}
+Output........................
+                                 TreeSet contains: 
+                                 contribute
+                                 for
+                                 geeks
+                                 practice
