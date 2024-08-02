@@ -1,0 +1,74 @@
+TopoSort method .it is also solved by Djisktra's Algorithm.
+
+
+class Solution {
+    private void DFS(ArrayList<ArrayList<ArrayList<Integer>>> graph, Stack<Integer> st, boolean[] visited, int src) {
+        visited[src] = true;
+        for (ArrayList<Integer> nbr : graph.get(src)) {
+            if (!visited[nbr.get(0)]) {
+                DFS(graph, st, visited, nbr.get(0));
+            }
+        }
+        st.push(src);
+    }
+
+    public int[] shortestPath(int N, int M, int[][] edges) {
+        // Initialize graph as an adjacency list
+        ArrayList<ArrayList<ArrayList<Integer>>> graph = new ArrayList<>();
+        for (int i = 0; i < N; i++) {
+            graph.add(new ArrayList<>());
+        }
+        
+        // Add edges to the graph
+        for (int i = 0; i < M; i++) {
+            ArrayList<Integer> ls = new ArrayList<>();
+            ls.add(edges[i][1]);
+            ls.add(edges[i][2]);
+            graph.get(edges[i][0]).add(ls);
+        }
+        
+        // Perform topological sort using DFS
+        int[] topSort = new int[N];
+        boolean[] visited = new boolean[N];
+        Stack<Integer> st = new Stack<>();
+        for (int i = 0; i < N; i++) {
+            if (!visited[i]) {
+                DFS(graph, st, visited, i);
+            }
+        }
+        
+        // Fill topSort array with nodes in topological order
+        int idx = 0;
+        while (!st.isEmpty()) {
+            topSort[idx++] = st.pop();
+        }
+        
+        // Initialize distance array with infinity (1e9)
+        int[] distance = new int[N];
+        Arrays.fill(distance, (int) 1e9);
+        distance[0] = 0; // Assuming source node is 0
+        
+        // Calculate shortest paths using the topological order
+        for (int i = 0; i < N; i++) {
+            int src = topSort[i];
+            if (distance[src] != (int) 1e9) { // Only process if src is reachable
+                for (ArrayList<Integer> nbr : graph.get(src)) {
+                    int dest = nbr.get(0);
+                    int weight = nbr.get(1);
+                    if (distance[dest] > distance[src] + weight) {
+                        distance[dest] = distance[src] + weight;
+                    }
+                }
+            }
+        }
+        
+        // Replace unreachable distances with -1
+        for (int i = 0; i < N; i++) {
+            if (distance[i] == (int) 1e9) {
+                distance[i] = -1;
+            }
+        }
+        
+        return distance;
+    }
+}
