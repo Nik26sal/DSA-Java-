@@ -1,0 +1,40 @@
+
+
+//User function Template for Java
+
+
+class Solution
+{
+    static class Pair{
+        int Node;
+        int dis;
+        Pair(int Node,int dis){
+            this.Node = Node;
+            this.dis = dis;
+        }
+    }
+    static int[] dijkstra(int V, ArrayList<ArrayList<ArrayList<Integer>>> adj, int S)
+    {
+        int dis[] = new int[V];
+        Arrays.fill(dis,Integer.MAX_VALUE);
+        dis[S] = 0;
+        PriorityQueue<Pair> pq = new PriorityQueue<>((a,b)->a.dis-b.dis);
+        pq.add(new Pair(S,0));
+        while(!pq.isEmpty()){
+            Pair a = pq.remove();
+            int node = a.Node;
+            int dist = a.dis;
+            ArrayList<ArrayList<Integer>> ls = adj.get(node);
+            
+            for(ArrayList<Integer> nbr:ls){
+                int wt = nbr.get(1);
+                int nb = nbr.get(0);
+                if(dis[nb]>dis[node]+wt){
+                    dis[nb] = dis[node]+wt;
+                    pq.add(new Pair(nb,dis[nb]));
+                }
+            }
+        }
+        return dis;
+    }
+}
