@@ -1,0 +1,35 @@
+class Solution {
+    
+    public int[] shortestPath(int[][] edges,int n,int m ,int src) {
+        int distance[] = new int[n];
+        ArrayList<ArrayList<Integer>> graph = new ArrayList<>();
+        for(int i =0;i<n;i++){
+            graph.add(new ArrayList<>());
+        }
+        
+        for(int i =0;i<m;i++){
+            graph.get(edges[i][0]).add(edges[i][1]);
+            graph.get(edges[i][1]).add(edges[i][0]);
+        }
+        
+        Arrays.fill(distance,(int)1e9);
+        distance[src] = 0;
+        Queue<Integer> q = new LinkedList<>();
+        q.offer(src);
+        while(!q.isEmpty()){
+            int a = q.poll();
+            for(int nbr : graph.get(a)){
+                if(distance[nbr]>distance[a]+1){
+                    q.offer(nbr);
+                    distance[nbr] = distance[a]+1;
+                }
+            }
+        }
+        for(int i =0;i<n;i++){
+            if(distance[i] == (int)1e9){
+                distance[i] = -1;
+            }
+        }
+        return distance;
+    }
+}
