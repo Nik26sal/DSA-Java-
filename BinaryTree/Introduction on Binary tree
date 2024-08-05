@@ -1,0 +1,27 @@
+Trees are the type of Non-linear DataStructure.
+it has only two Nodes.leftNode and right Node;
+the Node that has no left Node and right Node or the value of both is null then that node is called as Leaf Node;
+Root Node is the Node where the trees Become start
+Left nOde and right Node of of Node is called as Child Node of a parent Node.
+Type of Binary tree:
+1.Fully Binary Tree:-
+                    -It is also called as Strict Binary tree.
+                    -It is a type of Tree in which Every Node of Binary Tree have exactly Two Node or Zero Node as Child
+2.Complete Binary Tree:-
+                    -A Complete Binary Tree is a specialised form of Binary Tree where all levels are filled completely except possibly the 
+                     last level,which is filled from left to right.
+                    -All levels of the tree, except possibly the last one, are fully filled. If the last level is not completely filled,
+                     it is filled from left to right, ensuring that nodes are positioned as far left as possible.
+                    -Index of Node is increase by one .
+3.Perfect Binary tree:-
+                     -A Perfect Binary tree is a type of Binary Tree where all leaf nodes are at the same level and 
+                      the number of leaf nodes is maximised for that level.
+                     -Every node in a perfect binary tree has either zero or two children. 
+                      This means that every internal node (non-leaf node) has exactly two children and 
+                      all leaf nodes are at the same level.All levels of this tree are fully filled with nodes including 
+                      the last level. 
+4.Balanced Binary Tree:-
+                     -A Balanced Binary tree is a type of Binary Tree where the heights of the two subtrees of any node differ by at most one. 
+                     -The left Height of Node - The right height of Node is equals to 1 then called as complete Binary tree.
+5.Degenerated Tree:-
+                  A Degenerate Tree is a Binary Tree where the nodes are arranged in a single path leaning to the right or left.
