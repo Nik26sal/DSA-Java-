@@ -1,0 +1,6 @@
+In binary Tree Two type of Traversal is present 
+1.DFS(Depth First Traversal) 2.BFS(Breadth First Traversal)
+1.Depth first search are further divided into three type :1.Preorder :Root Left Right
+                                             2.InOrder : Left Root Right
+                                             3.PostOrder : Left Right Root]
+2.Breadth first search are further divided into a type :1.Level Order Traversal
