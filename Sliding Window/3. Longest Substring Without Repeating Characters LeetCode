@@ -1,0 +1,19 @@
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        // 1 length ka bhi string ho sakta hai toh isse tay hota hai window size of length 1
+        // So,i and j points at same point;
+        int i =0;
+        int j =0;
+        int length =0;
+        HashMap<Character,Integer> map = new HashMap<>();
+        while(j<s.length()){
+            if(map.containsKey(s.charAt(j))){
+                i = Math.max(i,map.get(s.charAt(j))+1);
+            }
+            map.put(s.charAt(j),j);
+            length = Math.max(length,j-i+1);
+            j++;
+        }
+        return length;
+    }
+}
