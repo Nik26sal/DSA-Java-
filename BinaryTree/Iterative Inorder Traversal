@@ -1,0 +1,19 @@
+private List<Integer> InOrder(Node root){
+        List<Integer> ls = new ArrayList<>();
+        Stack<Node> st = new Stack<>();
+        while(true){
+            if(root != null){
+                st.push(root);
+                root = root.left;
+            }
+            else{
+                if(st.isEmpty()){
+                    break;
+                }
+                Node p = st.pop();
+                ls.add(p.val);
+                root = p.right;
+            }
+        }
+        return ls;
+    }
