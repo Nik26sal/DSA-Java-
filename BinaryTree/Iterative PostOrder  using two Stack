@@ -1,0 +1,21 @@
+private List<Integer> PostOrder(Node root){
+        List<Integer> ls = new ArrayList<>();
+        if(root == null)return ls;
+        Stack<Node> st = new Stack<>();
+        Stack<Integer> st2= new Stack<>();
+        st.add(root);
+        while(!st.isEmpty()) {
+            Node par = st.pop();
+            st2.push(par.val);
+            if (par.left != null) {
+                st.push(par.left);
+            }
+            if (par.right != null) {
+                st.push(par.right);
+            }
+        }
+        while(!st2.isEmpty()){
+            ls.add(st2.pop());
+        }
+        return ls;
+    }
