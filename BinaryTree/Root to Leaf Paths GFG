@@ -1,0 +1,27 @@
+class Solution {
+    private static void PathFiller(Node root,ArrayList<ArrayList<Integer>> ls ,ArrayList<Integer> list){
+        if(root == null)return;
+        list.add(root.data);
+        if(root.left  == null && root.right == null){
+            ls.add(new ArrayList<>(list));
+        }
+        else{
+       
+        if(root.left !=null){
+            PathFiller(root.left,ls,list);
+        }
+        if(root.right != null){
+            PathFiller(root.right,ls,list);
+        }
+        }
+        list.remove(list.size()-1);
+        
+    }
+    public static ArrayList<ArrayList<Integer>> Paths(Node root) {
+        ArrayList<ArrayList<Integer>> ls = new ArrayList<>();
+        PathFiller(root,ls,new ArrayList<>());
+        //System.out.println(ls);
+        return ls;
+    }
+}
+        
