@@ -1,0 +1,27 @@
+class Solution {
+    private TreeNode method(int[] arr1, int st1, int end1, int[] arr2, int st2, int end2) {
+        if (st1 > end1 || st2 > end2) {
+            return null;
+        }
+        TreeNode root = new TreeNode(arr1[st1]);
+        int idx = find(arr2, arr1[st1]);
+        int leftTreeSize = idx - st2;
+        root.left = method(arr1, st1 + 1, st1 + leftTreeSize, arr2, st2, idx - 1);
+        root.right = method(arr1, st1 + leftTreeSize + 1, end1, arr2, idx + 1, end2);
+
+        return root;
+    }
+
+    private int find(int[] arr, int i) {
+        for (int j = 0; j < arr.length; j++) {
+            if (arr[j] == i) {
+                return j;
+            }
+        }
+        return -1;
+    }
+
+    public TreeNode buildTree(int[] preorder, int[] inorder) {
+        return method(preorder, 0, preorder.length - 1, inorder, 0, inorder.length - 1);
+    }
+}
