@@ -1,0 +1,28 @@
+class Solution {
+    private int index(int preorder[], int st, int target, int end) {
+        for (int i = st; i <= end; i++) {
+            if (preorder[i] > target) {
+                return i;
+            }
+        }
+        return end + 1;
+    }
+
+    private TreeNode tree(int preorder[], int st, int end) {
+        if (st > end) {
+            return null;
+        }
+        TreeNode box = new TreeNode(preorder[st]);
+        if (st == end) {
+            return box;
+        }
+        int lastIndex = index(preorder, st + 1, preorder[st], end);
+        box.left = tree(preorder, st + 1, lastIndex - 1);
+        box.right = tree(preorder, lastIndex, end);
+        return box;
+    }
+
+    public TreeNode bstFromPreorder(int[] preorder) {
+        return tree(preorder, 0, preorder.length - 1);
+    }
+}
