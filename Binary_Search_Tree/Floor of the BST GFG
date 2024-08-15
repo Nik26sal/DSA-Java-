@@ -1,0 +1,25 @@
+class Solution {
+    private static void finder(Node root,int x,int arr[]){
+        if(root == null){
+            return;
+        }
+        if(root.data<=x){
+            arr[0] = Math.max(arr[0],root.data);
+        }
+        if(root.data>x){
+            finder(root.left,x,arr);
+        }
+        else{
+            finder(root.right,x,arr);
+        }
+    }
+    public static int floor(Node root, int x) {
+        if(root == null)return -1;
+        int ans[] = {Integer.MIN_VALUE};
+        finder(root,x,ans);
+        if(ans[0] == Integer.MIN_VALUE){
+            return-1;
+        }
+        return ans[0];
+    }
+}
