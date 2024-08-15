@@ -1,0 +1,23 @@
+class Tree {
+    private void finder(Node root,int key,int ans[]){
+         if (root == null) return ;
+        if(root.data >= key){
+            ans[0] = Math.min(ans[0],root.data);
+        }
+        if(root.data > key){
+            finder(root.left,key,ans);
+        }
+        else{
+            finder(root.right,key,ans);
+        }
+    }
+    int findCeil(Node root, int key) {
+        if (root == null) return -1;
+        int ans[] = {Integer.MAX_VALUE};
+        finder(root,key,ans);
+        if(ans[0] == Integer.MAX_VALUE){
+            return -1;
+        }
+        return ans[0];
+    }
+}
