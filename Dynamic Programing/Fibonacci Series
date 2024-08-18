@@ -1,6 +1,35 @@
 Memoization____--------------------------------------------------
 (used to save the Time Complexity or Getting Time Efficiency)
+static long Memo(int n ,long dp[]){
+    if(n <=1){
+        return n;
+    }
+    if(dp[n] != -1)return dp[n];
+    dp[n] = Memo(n-1,dp)+Memo(n-2,dp);
+    return dp[n];
+}
+    static long topDown(int n) {
+        long dp[] = new long[n+1];
+        Arrays.fill(dp,-1);
+        return Memo(n,dp);
+    }
 
+Tabulation_______________-----------------------------------------------
+static long tabu(int n,long prev1,long prev2){
+    if(n == 1){
+        return prev2;
+    }
+    if( n == 0){
+        return prev1;
+    }
+    long curr = prev1+prev2;
+    prev1 = prev2;
+    prev2 = curr;
+    return tabu(n-1,prev1,prev2);
+}
+    static long bottomUp(int n) {
+        return tabu(n,0,1);
+    }
 
 
 
